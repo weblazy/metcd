@@ -3,8 +3,7 @@ module github.com/weblazy/metcd
 go 1.14
 
 replace (
-	go.etcd.io/etcd/client/pkg/v3 => ./client/pkg
-	go.etcd.io/etcd/raft/v3 => ./raft
+	go.etcd.io/etcd/client/pkg/v3 => ./pkg
 	go.etcd.io/etcd/server/v3 => ./server
 )
 

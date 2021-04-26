@@ -24,7 +24,6 @@ import (
 	"strconv"
 	"time"
 
-	"go.etcd.io/etcd/client/pkg/v3/fileutil"
 	"go.etcd.io/etcd/client/pkg/v3/types"
 	"go.etcd.io/etcd/raft/v3"
 	"go.etcd.io/etcd/raft/v3/raftpb"
@@ -271,8 +270,14 @@ func (rc *raftNode) writeError(err error) {
 	rc.node.Stop()
 }
 
+// Exist returns true if a file or directory exists.
+func Exist(name string) bool {
+	_, err := os.Stat(name)
+	return err == nil
+}
+
 func (rc *raftNode) startRaft() {
-	if !fileutil.Exist(rc.snapdir) {
+	if !Exist(rc.snapdir) {
 		if err := os.Mkdir(rc.snapdir, 0750); err != nil {
 			log.Fatalf("raftexample: cannot create dir for snapshot (%v)", err)
 		}
