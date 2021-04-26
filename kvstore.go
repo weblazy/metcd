@@ -1,8 +1,8 @@
 package metcd
 
-type KVStore interface {
+type Kvstore interface {
 	// Lookup get key value
-	Lookup(key string) (string bool)
+	Lookup(key string) (string, bool)
 	// Propose kv request into raft state machine
 	Propose(k, v string)
 	// ReadCommits consume entry from raft state machine into KvStore map until error
