@@ -22,7 +22,7 @@ import (
 	"go.etcd.io/etcd/raft/v3/raftpb"
 )
 
-// test main
+// test main1
 func main() {
 	cluster := flag.String("cluster", "http://127.0.0.1:9021", "comma separated cluster peers")
 	id := flag.Int("id", 1, "node ID")
